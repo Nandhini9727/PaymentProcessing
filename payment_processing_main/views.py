@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 import requests
 
+
 def home(request):
     return render(request,'home.html')
 
@@ -11,13 +12,31 @@ def make_payment(request):
         card_number = request.POST.get('cardnumber')
         expiry_date = request.POST.get('expiry')
         cvv = request.POST.get('cvv')
+        amount = request.POST.get('amount')
+
         
-        # Now you can process the data as needed
+        payload = {
+            'cardholder_name': cardholder_name,
+            'card_number': card_number,
+            'expiry_date': expiry_date,
+            'cvv': cvv,
+            'amount': amount
+        }
+        response = requests.post(f'http://172.31.27.150/process', data=payload)
+
+        # Handle server response
+        response_data = response.json()
+        if response.status_code == 200:
+            # Payment successful
+            message = response_data.get('message')
+            authentication_code = response_data.get('authenticationCode')
+            context = {'message':message,'authentication_code':authentication_code}
+            return render(request,'success.html',context)
+        else:
+            # Payment failed
+            message = response_data.get('error')
+            context = {'message':message}
+            return render(request,'fail.html',context)
+
         
-        # For example, you can save it to a database
         
-        # Redirect to a success page
-        return render(request,'sucess.html')
-    else:
-        # Handle GET requests or render a different template
-        return render(request, 'error.html', {'message': 'Method not allowed'})
