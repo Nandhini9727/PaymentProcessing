@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Successful</title>
-</head>
-<body>
-    
+  </head>
+  <body>
     <h1>Hurry! {{message}}</h1>
     <h2>Here is your authentication code: {{authentication_code}}</h2>
-    
-</body>
+    <a href="{% url 'home' %}">Go Back to Home Page</a>
+  </body>
 </html>

@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+< lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,8 +20,8 @@
     }
     </style>
 </head>
-<body>
-    <div class="container">
+<>
+    < class="container">
         <h2 class="mt-5 mb-4">Enter your Credit Card Payment Information</h2>
         <form method="post" action="{% url 'make_payment' %}">
             {% csrf_token %}
@@ -53,6 +53,20 @@
             
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <br>
+        {% if total_amount %}
+        <h2>Total spend: ${{ total_amount }}</h2>
+        <a href="{% url 'home' %}">Check Again</a>
+        {% else %}
+        <h2>Check Your Total Spend</h2>
+        <form method="post" action="{% url 'getTotalSpend' %}">
+            {% csrf_token %}
+            <div class="form-group mb-4">
+                <label for="cardnumberts">Enter Card Number</label>
+                <input type="text" class="form-control" id="cardnumberts" name="cardnumberts" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Get Total Spend</button>
+        </form>
+        {% endif %}
     </div>
 </body>
-</html>
