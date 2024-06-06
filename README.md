@@ -1,4 +1,5 @@
-Steps to Run ProcessingServer.py in EC2 instance:
+
+**Steps to Run ProcessingServer.py in EC2 instance:**
 1) Lauch the EC2 instance(t2.micro) using Amazon Linux OS
 2) Connect using EC2 instance connect
 3) Type 'sudo su' to make sure we are root user
@@ -16,13 +17,13 @@ Steps to Run ProcessingServer.py in EC2 instance:
 15) To kill it type 'kill id_of_running_code' and run the 11 th step command to run.
 
 
-Security configuration for processingserver EC2 instance:
+**Security configuration for processingserver EC2 instance:**
 1) Allow SSH access on port 22 from anywhere(IPv4 address)
 2) Allow HTTP access on port 80 from anywhere(IPv4 address)
 3) Allow HTTP access on port 80 from anywhere(IPv6 address)
 
 
-Steps to Run Django Code:
+**Steps to Run Django Code:**
 1) Lauch the EC2 instance(t2.micro) using Ubuntu OS
 2) Connect using EC2 instance connect
 3) To obtain latest packages for ubuntu system type 'sudo apt-get update'
@@ -61,7 +62,7 @@ Steps to Run Django Code:
 
 
 
-Security configuration for webserver EC2 instance:
+**Security configuration for webserver EC2 instance:**
 1) Allow SSH access on port 22 from anywhere(IPv4 address)
 2) Allow HTTP access on port 80 from anywhere(IPv4 address)
 3) Allow HTTP access on port 80 from anywhere(IPv6 address)
